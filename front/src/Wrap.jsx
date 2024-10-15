@@ -4,10 +4,9 @@ import Home from './Home'
 import About from './About'
 import Projects from './Projects'
 import Contact from './Contact'
-
+import AudioPlayer from './Audio';
 const WarpDrive = () => {
   const [warpActive, setWarpActive] = useState(false);
-//   const [buttonText, setButtonText] = useState('Engage Warp Drive');
   const [currentPage, setCurrentPage] = useState('Home');
   const [backgroundImage, setBackgroundImage] = useState('../public/blue-space-4.jpg');
 
@@ -20,11 +19,6 @@ const WarpDrive = () => {
 
   useEffect(() => {
     createStars();
-    // if (warpContainerRef.current) {
-    //     starsRef.current = Array.from({ length: 300 }, () =>
-    //       createStar(warpContainerRef.current)
-    //     );
-    //   }
     animateStars();
     return () => {
         starsRef.current.forEach((star) => star.remove());
@@ -32,7 +26,6 @@ const WarpDrive = () => {
           cancelAnimationFrame(animationFrameRef.current);
         }
       };
-    // return () => cancelAnimationFrame(animationFrameRef.current);
   }, []);
 
   const createStar = () => {
@@ -55,7 +48,7 @@ const WarpDrive = () => {
   };
 
   const createStars = () => {
-    starsRef.current = Array(32).fill().map(() => {
+    starsRef.current = Array(300).fill().map(() => {
       const star = createStar();
       warpContainerRef.current.appendChild(star);
       return star;
@@ -91,58 +84,17 @@ const WarpDrive = () => {
     animationFrameRef.current = requestAnimationFrame(animateStars);
   };
 
-//   const handleWarpButtonClick = () => {
-//     setWarpActive(!warpActive);
-//     setButtonText(warpActive ? 'Engage Warp Drive' : 'Disengage Warp Drive');
-    
-//     if (!warpActive) {
-//       setTimeout(() => {
-//         flashRef.current.classList.add('active');
-//         setTimeout(() => {
-//           console.log('Arrived at destination!');
-//           setWarpActive(false);
-//           flashRef.current.classList.remove('active');
-//           setButtonText('Engage Warp Drive');
-//         }, 500);
-//       }, 3000);
-//     }
-//   };
-// const handleWarpButtonClick = () => {
-//     setWarpActive((prev) => !prev);
-    
-//     speedRef.current = warpActive ? 20 : 0.5; // Reset speed when toggling
-//     if (warpActive) {
-//         setTimeout(() => {
-//           // Navigate or update content after 3 seconds of warp
-//           // window.location.href = 'new-page.html';
-//             flash.classList.add('active');
-//             setTimeout(() => {
-//           console.log('Arrived at destination!');
-//         //   warpActive = false;
-//             setWarpActive((prev) => !prev);
-//             flash.classList.remove('active');
-//             // warpButton.textContent = 'Engage Warp Drive';
-//         }, 400);
-//         }, 1500);
-//       }
-//   };
 const handleButtonClick = (buttonName) => {
   setWarpActive((prevWarpActive) => {
     const newWarpActive = !prevWarpActive;
-    
-    // Update speedRef based on the new warpActive value
-    speedRef.current = newWarpActive ? 20 : 0.5;
-
-    // Check if warpActive is true (warp engaged) and handle the animation logic
+        speedRef.current = newWarpActive ? 20 : 0.5;
     if (newWarpActive) {
       setTimeout(() => {
-        // Trigger flash effect
         flash.classList.add('active');
 
         setTimeout(() => {
           console.log('Arrived at destination!');
           
-          // Deactivate warp after the timeout
           setWarpActive(false); // Warp ends here
           
           flash.classList.remove('active');
@@ -209,16 +161,7 @@ const handleButtonClick = (buttonName) => {
           }}>
         <div id="warpContainer" ref={warpContainerRef}></div>
       </div>
-    {/* <nav id="warpButton" className='grid grid-cols-2 gap-4 p-4 content-between'> */}
-    {/* <nav id="warpButton" className='absolute top-0 left-0 right-0 flex justify-between p-4'> */}
-      {/* <button className='text-white py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded' onClick={() => handleButtonClick('Home')}>Home</button>
-      <button className='text-white py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded' onClick={() => handleButtonClick('About')}>About</button>
-      <button className='text-white py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded' onClick={() => handleButtonClick('Projects')}>Projects</button>
-      <button className='text-white py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded' onClick={() => handleButtonClick('Contact')}>Contact</button> */}
-      {/* <button id="top-left" className="neon-button sm:-top-20" onClick={() => handleButtonClick('Home')}><img src="./tabler_home.svg" alt="Home Icon" />Home</button>
-      <button id="top-right" className="neon-button" onClick={() => handleButtonClick('About')}><img src="./about.svg" alt="About Icon" />About</button>
-      <button id="bottom-left" className="neon-button bott" onClick={() => handleButtonClick('Projects')}><img src="./projects.svg" alt="Project Icon" />Projects</button>
-      <button id="bottom-right" className="neon-button bott" onClick={() => handleButtonClick('Contact')}><img src="./contact.svg" alt="Contact Icon" />Contact</button> */}
+  
       <div id="left" className='flex flex-col items-center fixed right-5  top-1/2 transform -translate-y-1/2 space-y-6 '>
         <button id="top-left" className='neon-button' onClick={() => handleButtonClick('Home')}>
           <img src="./tabler_home.svg" alt="Home Icon" class="button-icon" />
@@ -258,9 +201,7 @@ const handleButtonClick = (buttonName) => {
           <img src="./twitter.svg" alt="Contact Icon" />
         </a>
       </div>
-
-    {/* </nav> */}
-    {/* <button id="warpButton" onClick={() => handleButtonClick('Warp Drive')}>Engage Warp Drive</button> */}
+      <div className='flex flex-col justify-center items-center relative -bottom-60 border-white  h-screen'>{<AudioPlayer />}</div>
       <div className='fixed w-full h-screen z-10 flex justify-center text-white'>
         {currentPage === 'Home' && <Home />}
         {currentPage === 'About' && <About />}
