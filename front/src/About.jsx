@@ -13,7 +13,7 @@ const About = () => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="flex justify-center items-center h-screen w-10/12">
+    <div className="flex justify-center items-center h-screen w-4/5">
        {isVisible && (
       <div className=" shadow-sm w-full backdrop-blur-md bg-white/8 rounded-3xl max-h-screen animate-popup-expand">
         <div className="flex flex-col space-y-1.5 p-6 px-8 pt-8">

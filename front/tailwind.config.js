@@ -23,6 +23,15 @@ module.exports = {
           // '100%': { height: '100%', opacity: '1' }, // Fully expanded
         },
       },
+      screens: {
+        'xs': '480px',   // Custom breakpoint for extra small devices
+        'sm': '640px',   // Existing small breakpoint (unchanged)
+        'md': '768px',   // Existing medium breakpoint (unchanged)
+        'lg': '1024px',  // Existing large breakpoint (unchanged)
+        'xl': '1280px',  // Existing extra-large breakpoint (unchanged)
+        '2xl': '1536px', // Existing 2x-large breakpoint (unchanged)
+        '3xl': '1800px', // Custom breakpoint for very large screens
+      },
     },
   },
   plugins: [

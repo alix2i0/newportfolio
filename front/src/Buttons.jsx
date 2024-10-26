@@ -32,22 +32,22 @@
 //     const targetSpeed = warpActive ? 20 : 0.5;
 //     speedRef.current = targetSpeed;
 //   }, [warpActive]);
-// //   useEffect(() => {
-// //     // Create stars
-// //     if (warpContainerRef.current) {
-// //       stars.current = Array.from({ length: 300 }, () =>
-// //         createStar(warpContainerRef.current)
-// //       );
-// //     }
+//   useEffect(() => {
+//     // Create stars
+//     if (warpContainerRef.current) {
+//       stars.current = Array.from({ length: 300 }, () =>
+//         createStar(warpContainerRef.current)
+//       );
+//     }
 
-// //     // Animate stars
-// //     animateStars();
+//     // Animate stars
+//     animateStars();
 
-// //     // Cleanup on component unmount
-// //     return () => {
-// //       stars.current.forEach((star) => star.remove());
-// //     };
-// //   }, []);
+//     // Cleanup on component unmount
+//     return () => {
+//       stars.current.forEach((star) => star.remove());
+//     };
+//   }, []);
 
 //   useEffect(() => {
 //     // Handle button text and flash effect
@@ -128,19 +128,21 @@
 //     speedRef.current = warpActive ? 20 : 0.5; // Reset speed when toggling
 //   };
 //   return (
-//     // <div  className='flex justify-between items-center h-screen m-0 ' >
-//     //     <div className='flex flex-col space-y-4'>
-//     //         <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded'>111111</button>
-//     //         <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded'>222222</button>
+    // start:
+    // <div  className='flex justify-between items-center h-screen m-0 ' >
+    //     <div className='flex flex-col space-y-4'>
+    //         <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded'>111111</button>
+    //         <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded'>222222</button>
 
-//     //     </div>
-//     //     <div className='flex flex-col space-y-4'>
-//     //         <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded'>44444444</button>
-//     //         <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded'>3333333</button>
+    //     </div>
+    //     <div className='flex flex-col space-y-4'>
+    //         <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded'>44444444</button>
+    //         <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded'>3333333</button>
+    //     </div>
+    // </div>
+    // ends
 
-//     //     </div>
 
-//     // </div>
 //     <div className="h-screen flex overflow-hidden">
 //       {/* Left Side */}
 //       <div className="flex flex-col justify-center items-start space-y-4 w-1/2 p-4">
@@ -154,17 +156,17 @@
 //       </div>
 
 //       {/* Right Side */}
-//       {/* <div className="flex flex-col justify-center items-end space-y-4 w-1/2 p-4">
+//       <div className="flex flex-col justify-center items-end space-y-4 w-1/2 p-4">
 //         <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
 //           44444444
 //         </button>
 //         <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
 //           3333333
 //         </button>
-//       </div> */}
+//       </div>
 
 //       {/* Animation Container */}
-//       <div
+//       {/* <div
 //         className="fixed w-full h-full bg-black perspective-500"
 //         ref={warpContainerRef}
 //       >
@@ -173,42 +175,45 @@
 //           ref={flashRef}
 //           className="fixed top-0 left-0 w-full h-full bg-white opacity-0 pointer-events-none transition-opacity ease-out duration-500 z-50"
 //         ></div>
-//       </div>
+//       </div> */}
 //     </div>
 //   );
 // };
 
 // export default Buttons;
 
-import React, { useEffect, useRef, useState } from "react";
 
-const Buttons = () => {
+//this is the sconed edit :
+
+// import React, { useEffect, useRef, useState } from "react";
+
+// const Buttons = () => {
   
-  return (
-    <div className="h-screen flex overflow-hidden">
-        <div id="space">
-            <div id="warpContainer"></div>
-            <div id="flash"></div>
-        </div>
-        <button id="warpButton">Engage Warp Drive</button>
-    </div>
-  );
-};
+//   return (
+//     <div className="h-screen flex overflow-hidden">
+//         <div id="space">
+//             <div id="warpContainer"></div>
+//             <div id="flash"></div>
+//         </div>
+//         <button id="warpButton">Engage Warp Drive</button>
+//     </div>
+//   );
+// };
 
-export default Buttons;
+// export default Buttons;
 
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-primary-foreground">
-                  Name
-                </Label>
-                <Input id="name" placeholder="Enter your name" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-primary-foreground">
-                  Email
-                </Label>
-                <Input id="email" type="email" placeholder="Enter your email" />
-              </div>
-            </div>
+            // <div className="grid grid-cols-2 gap-4">
+            //   <div className="space-y-2">
+            //     <Label htmlFor="name" className="text-primary-foreground">
+            //       Name
+            //     </Label>
+            //     <Input id="name" placeholder="Enter your name" />
+            //   </div>
+            //   <div className="space-y-2">
+            //     <Label htmlFor="email" className="text-primary-foreground">
+            //       Email
+            //     </Label>
+            //     <Input id="email" type="email" placeholder="Enter your email" />
+            //   </div>
+            // </div>

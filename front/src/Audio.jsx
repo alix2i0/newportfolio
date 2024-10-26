@@ -9,10 +9,10 @@ const AudioPlayer = () => {
   const frequencyDataRef = useRef(null);
 
   const songs = [
-    { path: '/audio/dark-aria.m4a', name: 'Solo Leveling | Attack on Titan' },
-    { path: '/audio/hunter-x-hunter.mp3', name: 'Hunter x Hunter' },
-    { path: '/audio/neverland.mp3', name: 'The Promised Neverland' },
-    { path: '/audio/naruto.mp3', name: 'Naruto' },
+    { path: './audio/dark-aria.m4a', name: 'Solo Leveling | Attack on Titan' },
+    { path: './audio/hunter-x-hunter.mp3', name: 'Hunter x Hunter' },
+    { path: './audio/neverland.mp3', name: 'The Promised Neverland' },
+    { path: './audio/naruto.mp3', name: 'Naruto' },
   ];
 
   useEffect(() => {
@@ -29,12 +29,29 @@ const AudioPlayer = () => {
   }, []);
 
   const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
+    // if (isPlaying) {
+    //   audioRef.current.pause();
+    // } else {
+    //   audioRef.current.play();
+    // }
+    // setIsPlaying(!isPlaying);
+    if (contextRef.current.state === 'suspended') {
+      contextRef.current.resume().then(() => {
+        if (isPlaying) {
+          audioRef.current.pause();
+        } else {
+          audioRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
+      });
     } else {
-      audioRef.current.play();
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
     }
-    setIsPlaying(!isPlaying);
   };
 
   const nextSong = () => {
@@ -70,19 +87,21 @@ const AudioPlayer = () => {
     //     <h3>Now Playing: {songs[currentSongIndex].name}</h3>
     //   </div>
     // </div>
-    <div class="audio-player flex flex-col items-center">
-  <div class="controls flex space-x-4">
-    <button class="btn btn-prev bg-blue-500 p-2" onClick={previousSong}>Previous</button>
-    <button class="btn btn-toggle bg-green-500 p-2" onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
-    <button class="btn btn-next bg-blue-500 p-2" onClick={nextSong}>Next</button>
+    <div class="audio-player flex flex-col items-center ">
+  <div class="controls flex space-x-4 ">
+    <button class="btn btn-prev " onClick={previousSong}><img src='./backward.svg' /></button>
+    <button class="btn btn-toggle " onClick={togglePlay}>{isPlaying ? <img src='./pause.svg' /> : <img src='./play.svg' />}</button>
+    <button class="btn btn-next " onClick={nextSong}><img src='./forward.svg' /></button>
   </div>
-  <div class="info mt-4">
-    <p class="text-lg font-bold">{songs[currentSongIndex].name}</p>
+  <div class="info">
+    <p class="text-lg font-bold text-white">{songs[currentSongIndex].name}</p>
   </div>
   {/* <canvas id="visualizer" class="w-full h-24 mt-4"></canvas> */}
-  {analyserRef.current && (
-        <FrequencyVisualizer analyser={analyserRef.current} />
-      )}
+  {/* <div className='relative bottom-32 -z-10'>
+      {analyserRef.current && (
+            <FrequencyVisualizer analyser={analyserRef.current} />
+          )}
+  </div> */}
 </div>
 
   );

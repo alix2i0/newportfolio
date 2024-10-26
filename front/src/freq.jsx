@@ -19,7 +19,8 @@ const FrequencyVisualizer = ({ analyser }) => {
         const x = barWidth * index;
         ctx.fillStyle = 'rgba(50, 100, 200, 0.5)';
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-        
+        ctx.fillRect(canvas.width - x - barWidth, canvas.height - barHeight, barWidth, barHeight);
+
       });
       requestAnimationFrame(draw);
     };

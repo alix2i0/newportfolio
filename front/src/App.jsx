@@ -16,6 +16,7 @@ function App() {
       <WarpDrive/>
      
       {/* <Home/> */}
+      {/* <HomeComponent/> */}
       {/* <ParticleBackground  id="spacec" /> */}
     </>
   );

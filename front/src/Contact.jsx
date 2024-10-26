@@ -18,7 +18,7 @@ const Contact = () => {
         <div className="flex flex-col p-3 px-8 pt-4 mb-8">
           {/* <div className='flex justify-between items-center'> */}
 
-          <h1 className="text-4xl font-bold text-white mb-8 flex justify-center">Contact Us</h1>
+          <h1 className="text-4xl font-bold text-white mb-8 flex justify-center">Contact Me</h1>
           {/* <div className="p-6 px-8 py-6"> */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-4">
