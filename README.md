@@ -1,6 +1,7 @@
 # My Space Portfolio 🚀
 #
 **About the Project**
+#
 Welcome to my personal portfolio site! This isn’t just a standard portfolio—it’s an adventure through space! As you move through different sections, it’s like you’re traveling through the stars. I wanted to create an experience that’s both fun and unique.
 
 **Features**
