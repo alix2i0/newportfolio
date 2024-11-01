@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./WarpDrive.css";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  // const [countdown, setCountdown] = useState(7);
+  useEffect(() => {
+    // Show the pop-up after 1.5 seconds
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1500);
+
+    // Cleanup function
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,8 +24,8 @@ const Contact = () => {
 
   return (
     // <div className="flex flex-col items-center justify-center h-full p-4">
-    <div className="flex justify-center items-center h-screen">
-      <div className="border shadow-sm w-full max-w-md backdrop-blur-sm rounded-3xl max-h-90">
+    <div className="flex justify-center items-center h-screen w-4/5 lg:w-auto">
+      {isVisible && (<div className="border shadow-sm w-full backdrop-blur-md rounded-3xl max-h-screen">
         <div className="flex flex-col p-3 px-8 pt-4 mb-8">
           {/* <div className='flex justify-between items-center'> */}
 
@@ -61,7 +72,7 @@ const Contact = () => {
           </div>
           {/* </div> */}
         </div>
-      </div>
+      </div>)}
     </div>
   );
 };

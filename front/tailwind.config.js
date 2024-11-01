@@ -31,6 +31,10 @@ module.exports = {
         'xl': '1280px',  // Existing extra-large breakpoint (unchanged)
         '2xl': '1536px', // Existing 2x-large breakpoint (unchanged)
         '3xl': '1800px', // Custom breakpoint for very large screens
+        'max-xl': {'max': '1280px'},
+      'max-lg': {'max': '1024px'},
+      'max-md': {'max': '768px'},
+      'max-sm': {'max': '640px'},
       },
     },
   },

@@ -71,17 +71,44 @@ body, html {
 #flash.active {
   opacity: 1;
 }
+
+/* BUTTON IN SMALL SCREEN SIZE*/
 #toggle-menu{
   /* display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   position: fixed; */
+  /* width: 100%; */
   z-index: 90;
-  width: 100%;
-  bottom: 8%;
-  right: 8%;
+  bottom: 5%;
+  right: 5%;
+  width: 2.75rem;
+  height: 2.75rem;
 }
-.test1 {
+#toggle-menu1{
+  /* display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: fixed; */
+  /* width: 100%; */
+  z-index: 90;
+  bottom: 5%;
+  right: 5%;
+  width: 2.75rem;
+  height: 2.75rem;
+}
+/* #toggle-menu img{
+  width: 2.75rem;
+  height: 2.75rem;
+} */
+ /* .button-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  /* bottom: 0%;  */
+ /* } */ 
+.audio-div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,7 +118,7 @@ body, html {
   bottom: 5%;
   /* margin-bottom: 10px ; */
 }
-#left1 {
+#right {
   /* top: 35%; */
   /* display: flex;           Use flexbox layout */
   /* align-items: center;      Vertically center items */
@@ -149,21 +176,6 @@ body, html {
 }
 
 /* locacl on small  */
-@media (max-width: 600px) {
-  #top-left {
-      top: 10%;
-  }
-  #top-right {
-      top:10%
-  }
-  #bottom-left {
-    bottom: 10%;
-  }
-  
-  #bottom-right {
-    bottom: 10%;
-  }
-}
 
 /* Add this to the existing CSS */
 
@@ -183,6 +195,34 @@ body, html {
   transition: all 0.3s ease;
 }
 
+@media (max-width: 600px) {
+  #right {
+    /* align-items: end; */
+    bottom: 12%;
+    right: 4%;
+    padding: 2px;
+    top: auto;
+    
+  }
+  .button-list{
+    gap: 5px;
+  }
+  .neon-button{
+    padding: 1px;
+  }
+  #left{
+    bottom: 12%;
+    /* right: 1%; */
+    padding: 2px;
+    top: auto;
+    /* gap: 0; */
+  }
+  /* #button-list1{
+    display: flex;
+    
+    align-items: end;
+  } */
+}
 /* Icon class, no fixed width/height */
 .button-icon {
   max-width: 100%;          /* Allow the icon to scale naturally */

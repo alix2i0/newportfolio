@@ -1,6 +1,17 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './WarpDrive.css';
 const Projects = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  // const [countdown, setCountdown] = useState(7);
+  useEffect(() => {
+    // Show the pop-up after 1.5 seconds
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1500);
+
+    // Cleanup function
+    return () => clearTimeout(timer);
+  }, []);
   const projects = [{
     title: "Project 1",
     description: "Description of project 1.",
@@ -117,13 +128,15 @@ const Projects = () => {
     //       </div>
     //   </div>
     // </div>
-    <div className="flex flex-col justify-center items-center h-screen w-4/5 mx-auto">
-  <div className="text-center mb-8">
-    <h1 className="text-3xl sm:text-4xl">Projects Page</h1>
+    <div className='flex  justify-center items-center'>
+    {isVisible && (
+      <div className="flex flex-col justify-center items-center h-screen w-4/5 mx-8 max-h-screen backdrop-blur-md animate-popup-expand">
+    <div className="text-center mb-8 ">
+    <h1 className="text-3xl sm:text-4xl font-bold">Projects</h1>
     <p className="text-base sm:text-lg">Here are some of our projects.</p>
   </div>
 
-  <div className="overflow-auto h-96 w-full">
+  <div className="overflow-auto h-96 w-auto mx-2">
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {projects.map((project, index) => (
         <div key={index} className="w-full bg-blue-600 justify-self-center border border-gray-700 rounded-lg shadow">
@@ -144,6 +157,8 @@ const Projects = () => {
       ))}
     </div>
   </div>
+  </div>
+)}
 </div>
 
   );

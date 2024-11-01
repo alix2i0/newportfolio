@@ -88,10 +88,79 @@ const WarpDrive = () => {
 
     animationFrameRef.current = requestAnimationFrame(animateStars);
   };
-  function toggleMenu() {
+  // function toggleMenu() {
+  //   const buttonList = document.getElementById('button-list');
+  //   buttonList.classList.toggle('hidden');
+  //   if (!buttonList.classList.contains('hidden')) {
+  //     document.addEventListener('click', handleClickOutside);
+  //   }
+  // }
+  // function handleClickOutside(event) {
+  //   const buttonList = document.getElementById('button-list');
+  //   const toggleMenuButton = document.getElementById('toggle-menu');
+  
+  //   // Check if the click was outside both button-list and toggle-menu
+  //   if (!buttonList.contains(event.target) && !toggleMenuButton.contains(event.target)) {
+  //     buttonList.classList.add('hidden');
+  //     document.removeEventListener('click', handleClickOutside);
+  //   }
+  // }
+  let isMenuOpen = false;
+
+function toggleMenu() {
     const buttonList = document.getElementById('button-list');
     buttonList.classList.toggle('hidden');
-  }
+    isMenuOpen = !buttonList.classList.contains('hidden');
+    
+    if (isMenuOpen) {
+        document.addEventListener('click', handleClickOutside);
+    } else {
+        document.removeEventListener('click', handleClickOutside);
+    }
+}
+
+function handleClickOutside(event) {
+    const buttonList = document.getElementById('button-list');
+    const toggleButton = document.getElementById('toggle-menu');
+
+    // Close the menu only if clicking outside both `button-list` and the toggle button
+    if (!buttonList.contains(event.target) && !toggleButton.contains(event.target)) {
+        buttonList.classList.add('hidden');
+        isMenuOpen = false;
+        document.removeEventListener('click', handleClickOutside);
+    }
+}
+
+  // function toggleMenu1() {
+  //   const buttonList = document.getElementById('button-list1');
+  //   buttonList.classList.toggle('hidden');
+  // }
+  let isMenu1Open = false;
+
+function toggleMenu1() {
+    const buttonList1 = document.getElementById('button-list1');
+    buttonList1.classList.toggle('hidden');
+    isMenu1Open = !buttonList1.classList.contains('hidden');
+    
+    if (isMenu1Open) {
+        document.addEventListener('click', handleClickOutside1);
+    } else {
+        document.removeEventListener('click', handleClickOutside1);
+    }
+}
+
+function handleClickOutside1(event) {
+    const buttonList1 = document.getElementById('button-list1');
+    const toggleButton1 = document.getElementById('toggle-menu1');
+
+    // Close the menu only if clicking outside both `button-list1` and the toggle button
+    if (!buttonList1.contains(event.target) && !toggleButton1.contains(event.target)) {
+        buttonList1.classList.add('hidden');
+        isMenu1Open = false;
+        document.removeEventListener('click', handleClickOutside1);
+    }
+}
+
   
   const handleButtonClick = (buttonName) => {
     setWarpActive((prevWarpActive) => {
@@ -157,6 +226,7 @@ const WarpDrive = () => {
   return (
     <div>
       {/* <h1>hello</h1> */}
+
       <div id="flash" ref={flashRef}></div>
       <div
         id="space"
@@ -173,72 +243,73 @@ const WarpDrive = () => {
         <div id="warpContainer" ref={warpContainerRef}></div>
       </div>
       {/* --------------------------------------------------------------------------------------------------------------------- */}
-
-        <button
-          id="toggle-menu"
-          className="flex justify-end items-end fixed lg:hidden none"
-          onClick={toggleMenu}
-        >
-          <img src="/menu.svg" alt="Menu Icon" className="button-icon" />
-        </button>
-      <div
-        id="left1"
-        className="flex flex-col items-center fixed right-5  top-1/2 transform -translate-y-1/2 space-y-6 gap-2.5 px-1 py-4 "
+        {/* navigation */}
+      <button
+        id="toggle-menu"
+        className="fixed lg:hidden none"
+        onClick={toggleMenu}
       >
+        <img src="/menu.svg" alt="Menu Icon" className="button-icon w-11" />
+      </button>
+
+      {/* <div
+        
+      > */}
 
         {/* Button list (hidden by default on small screens) */}
         <div
           id="button-list"
-          className="hidden lg:flex flex-col items-center space-y-6 gap-2.5"
+          className="hidden lg:flex flex-col items-center space-y-6 "
+          onClick={toggleMenu}
         >
-          <button
-            id="top-left"
-            className="neon-button"
-            onClick={() => handleButtonClick("Home")}
-          >
-            <img
-              src="./tabler_home.svg"
-              alt="Home Icon"
-              className="button-icon"
-            />
-            <span className="button-text">Home</span>
-          </button>
-
-          <button
-            id="top-right"
-            className="neon-button"
-            onClick={() => handleButtonClick("About")}
-          >
-            <img src="./about.svg" alt="About Icon" className="button-icon" />
-            <span className="button-text">About</span>
-          </button>
-
-          <button
-            id="bottom-left"
-            className="neon-button"
-            onClick={() => handleButtonClick("Projects")}
-          >
-            <img
-              src="./projects.svg"
-              alt="Project Icon"
-              className="button-icon"
-            />
-            <span className="button-text">Projects</span>
-          </button>
-
-          <button
-            id="bottom-right"
-            className="neon-button"
-            onClick={() => handleButtonClick("Contact")}
-          >
-            <img
-              src="./contact.svg"
-              alt="Contact Icon"
-              className="button-icon"
-            />
-            <span className="button-text">Contact</span>
-          </button>
-        </div>
+          <div id="right"
+            className="flex flex-col items-center fixed right-5 rounded-lg top-1/2 transform -translate-y-1/2 space-y-6 gap-2.5 max-sm:-translate-y-0 max-sm:backdrop-blur-2xl">
+            <button
+              id="top-left"
+              className="neon-button"
+              onClick={() => handleButtonClick("Home")}
+            >
+              <img
+                src="./tabler_home.svg"
+                alt="Home Icon"
+                className="button-icon"
+              />
+              <span className="button-text">Home</span>
+            </button>
+            <button
+              id="top-right"
+              className="neon-button"
+              onClick={() => handleButtonClick("About")}
+            >
+              <img src="./about.svg" alt="About Icon" className="button-icon" />
+              <span className="button-text">About</span>
+            </button>
+            <button
+              id="bottom-left"
+              className="neon-button"
+              onClick={() => handleButtonClick("Projects")}
+            >
+              <img
+                src="./projects.svg"
+                alt="Project Icon"
+                className="button-icon"
+              />
+              <span className="button-text">Projects</span>
+            </button>
+            <button
+              id="bottom-right"
+              className="neon-button"
+              onClick={() => handleButtonClick("Contact")}
+            >
+              <img
+                src="./contact.svg"
+                alt="Contact Icon"
+                className="button-icon"
+              />
+              <span className="button-text">Contact</span>
+            </button>
+          </div>
+        {/* </div> */}
         {/* <button id="top-left" className='neon-button' onClick={() => handleButtonClick('Home')}>
           <img src="./tabler_home.svg" alt="Home Icon" class="button-icon" />
           <span class="button-text">Home</span>
@@ -260,29 +331,37 @@ const WarpDrive = () => {
         </button> */}
       </div>
       {/* ------------------------------------------------------------------------------------------------------------------------- */}
-
-      <div
-        id="left"
-        className="flex flex-col items-center fixed left-5 top-1/2 transform -translate-y-1/2 space-y-6 z-100 cursor-pointer gap-2.5"
-      >
-        <a href="https://linkedin.com/in/ali-bo">
-          <img src="./linked.svg" alt="Home Icon" />
-        </a>
-
-        <a href="https://github.com/alix2i0">
-          <img src="./github.svg" alt="About Icon" />
-        </a>
-
-        <a href="https://twitter.com/alibounkhila">
-          <img src="./hackerrank.svg" alt="Projects Icon" />
-        </a>
-
-        <a href="https://www.hackerrank.com/profile/alibounkhila">
-          <img src="./twitter.svg" alt="Contact Icon" />
-        </a>
+      {/* social media button */}
+      <button
+          id="toggle-menu1"
+          className="fixed !left-6 lg:hidden none"
+          onClick={toggleMenu1}
+        >
+          <img src="/network.svg" alt="Menu Icon" className="button-icon w-11" />
+        </button>
+        
+      <div id="button-list1"
+      className="hidden lg:flex flex-col items-center space-y-6 ">
+        <div
+          id="left"
+          className="flex flex-col items-center fixed left-5 top-1/2 transform -translate-y-1/2 space-y-6 z-100 cursor-pointer gap-2.5 max-sm:-translate-y-0 rounded-lg max-sm:backdrop-blur-2xl"
+        >
+          <a href="https://linkedin.com/in/al">
+            <img src="./linked.svg" alt="Home Icon" />
+          </a>
+          <a href="https://github.com/alix2i0">
+            <img src="./github.svg" alt="About Icon" />
+          </a>
+          <a href="https://twitter.com/">
+            <img src="./hackerrank.svg" alt="Projects Icon" />
+          </a>
+          <a href="https://www.hackerrank.com/profile/">
+            <img src="./twitter.svg" alt="Contact Icon" />
+          </a>
+        </div>
       </div>
       {/* ---------------------------------------------------------------------------------------------------------------------------------- */}
-      {/* <div className="test1">{<AudioPlayer />}</div> */}
+      {/* <div className="audio-div">{<AudioPlayer />}</div> */}
 
       {/* ---------------------------------------------------------------------------------------------------------------------------------- */}
       <div className="fixed w-full h-screen z-10 flex justify-center text-white">
