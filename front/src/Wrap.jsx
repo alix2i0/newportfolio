@@ -19,10 +19,10 @@ const WarpDrive = () => {
   const animationFrameRef = useRef(null);
 
   const imagesToPreload = {
-    Home: "../public/blue-space-4.jpg",
-    About: "../public/about.jpg",
-    Projects: "../public/project.jpeg",
-    Contact: "../public/contact.jpg",
+    Home: "blue-space-4.jpg",
+    About: "about.jpg",
+    Projects: "project.jpeg",
+    Contact: "contact.jpg",
   };
   useEffect(() => {
     preloadImages();
@@ -213,19 +213,19 @@ function handleClickOutside1(event) {
             setCurrentPage(buttonName);
             switch (buttonName) {
               case "Home":
-                setBackgroundImage("../public/blue-space-4.jpg");
+                setBackgroundImage("blue-space-4.jpg");
                 break;
               case "About":
-                setBackgroundImage("../public/about.jpg"); // Set your About background image here
+                setBackgroundImage("about.jpg"); // Set your About background image here
                 break;
               case "Projects":
-                setBackgroundImage("../public/project.jpeg"); // Set your Projects background image here
+                setBackgroundImage("project.jpeg"); // Set your Projects background image here
                 break;
               case "Contact":
-                setBackgroundImage("../public/contact.jpg"); // Set your Contact background image here
+                setBackgroundImage("contact.jpg"); // Set your Contact background image here
                 break;
               default:
-                setBackgroundImage("../public/blue-space-4.jpg");
+                setBackgroundImage("blue-space-4.jpg");
                 break;
             }
           }, 450);
@@ -234,19 +234,19 @@ function handleClickOutside1(event) {
         setCurrentPage(buttonName); // If not warping, change the page directly
         switch (buttonName) {
           case "Home":
-            setBackgroundImage("../public/blue-space-4.jpg");
+            setBackgroundImage("blue-space-4.jpg");
             break;
           case "About":
-            setBackgroundImage("../public/about.jpg"); // Set your About background image here
+            setBackgroundImage("about.jpg"); // Set your About background image here
             break;
           case "Projects":
-            setBackgroundImage("../public/project.jpeg"); // Set your Projects background image here
+            setBackgroundImage("project.jpeg"); // Set your Projects background image here
             break;
           case "Contact":
-            setBackgroundImage("../public/contact.jpg"); // Set your Contact background image here
+            setBackgroundImage("contact.jpg"); // Set your Contact background image here
             break;
           default:
-            setBackgroundImage("../public/blue-space-4.jpg");
+            setBackgroundImage("blue-space-4.jpg");
             break;
         }
       }
