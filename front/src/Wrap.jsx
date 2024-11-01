@@ -8,15 +8,49 @@ import AudioPlayer from "./Audio";
 const WarpDrive = () => {
   const [warpActive, setWarpActive] = useState(false);
   const [currentPage, setCurrentPage] = useState("Home");
-  const [backgroundImage, setBackgroundImage] = useState(
-    "../public/blue-space-4.jpg"
-  );
+  const [loading, setLoading] = useState(true);
+  const [backgroundImage, setBackgroundImage] = useState("");
+  // const [backgroundImage, setBackgroundImage] = useState("../public/blue-space-4.jpg");
 
   const warpContainerRef = useRef(null);
   const flashRef = useRef(null);
   const starsRef = useRef([]);
   const speedRef = useRef(0.5);
   const animationFrameRef = useRef(null);
+
+  const imagesToPreload = {
+    Home: "../public/blue-space-4.jpg",
+    About: "../public/about.jpg",
+    Projects: "../public/project.jpeg",
+    Contact: "../public/contact.jpg",
+  };
+  useEffect(() => {
+    preloadImages();
+  }, [currentPage]);
+
+  const preloadImages = () => {
+    setLoading(true); // Set loading to true
+    const images = Object.values(imagesToPreload);
+    let loadedImagesCount = 0;
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedImagesCount++;
+        if (loadedImagesCount === images.length) {
+          setLoading(false); // All images loaded
+          setBackgroundImage(imagesToPreload[currentPage]); // Set background once loaded
+        }
+      };
+      img.onerror = () => {
+        loadedImagesCount++;
+        if (loadedImagesCount === images.length) {
+          setLoading(false); // Handle load failure gracefully
+        }
+      };
+    });
+  };
 
   useEffect(() => {
     createStars();
@@ -243,6 +277,11 @@ function handleClickOutside1(event) {
         <div id="warpContainer" ref={warpContainerRef}></div>
       </div>
       {/* --------------------------------------------------------------------------------------------------------------------- */}
+      {loading && (
+        <div className="loading-screen">
+        <p>Loading...</p> {/* Add spinner or any loading graphic here */}
+      </div>
+      )}
         {/* navigation */}
       <button
         id="toggle-menu"
