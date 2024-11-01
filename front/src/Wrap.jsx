@@ -385,16 +385,16 @@ function handleClickOutside1(event) {
           id="left"
           className="flex flex-col items-center fixed left-5 top-1/2 transform -translate-y-1/2 space-y-6 z-100 cursor-pointer gap-2.5 max-sm:-translate-y-0 rounded-lg max-sm:backdrop-blur-2xl"
         >
-          <a href="https://linkedin.com/in/al" target="_blank">
+          <a href="https://linkedin.com/in/ali-bo" target="_blank">
             <img src="./linked.svg" alt="Home Icon" />
           </a>
           <a href="https://github.com/alix2i0" target="_blank">
             <img src="./github.svg" alt="About Icon" />
           </a>
-          <a href="https://twitter.com/" target="_blank">
+          <a href="https://twitter.com/alibounkhila" target="_blank">
             <img src="./twitter.svg" alt="Projects Icon" />
           </a>
-          <a href="https://www.hackerrank.com/" target="_blank">
+          <a href="https://www.hackerrank.com/profile/alibounkhila" target="_blank">
             <img src="./hackerrank.svg" alt="Contact Icon" />
           </a>
         </div>
