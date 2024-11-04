@@ -39,24 +39,24 @@ const Home = () => {
       }}
     >
       {isVisible && (
-        <div className="shadow-md w-10/12 max-w-3xl backdrop-blur-md bg-white/10 rounded-3xl p-8 text-center animate-popup-expand">
-          <h1 className="text-5xl font-bold text-white mb-4">
+        <div className="shadow-lg w-10/12 max-w-4xl backdrop-blur-md bg-white/10 rounded-3xl p-10 text-center animate-popup-expand">
+          <h1 className="text-6xl font-bold text-white mb-4">
             Welcome to My Portfolio!
           </h1>
-          <p className="text-lg text-white mb-6">
+          <p className="text-xl text-white mb-6 font-semibold">
             I’m a Full Stack Web Developer with expertise in React, Node.js, and design.
           </p>
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-6">
             {/* Avatar Image */}
-            <div className="w-32 h-32 bg-blue-500 rounded-full overflow-hidden shadow-lg border-4 border-white">
+            <div className="w-40 h-40 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full overflow-hidden shadow-lg border-4 border-white">
               <img
-                src="/cvimage1.png" // Replace with the actual path
+                src="/cvimage1.png" // Replace with the actual path of your image
                 alt="Avatar"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
-          <p className="text-white text-sm">This message will disappear in {countdown}...</p>
+          <p className="text-white text-lg">This message will disappear in {countdown} seconds...</p>
         </div>
       )}
     </div>
