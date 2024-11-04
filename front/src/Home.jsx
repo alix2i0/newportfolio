@@ -15,21 +15,21 @@ const Home = () => {
   }, []);
 
   // Countdown logic to hide message after reaching 0
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setInterval(() => {
-        setCountdown((prev) => {
-          if (prev > 1) {
-            return prev - 1;
-          } else {
-            setIsVisible(false); // Hide message after countdown reaches 0
-            return 0; // Stop countdown at 0
-          }
-        });
-      }, 1000); // Update countdown every second
-      return () => clearInterval(timer);
-    }
-  }, [isVisible]);
+  // useEffect(() => {
+  //   if (isVisible) {
+  //     const timer = setInterval(() => {
+  //       setCountdown((prev) => {
+  //         if (prev > 1) {
+  //           return prev - 1;
+  //         } else {
+  //           setIsVisible(false); // Hide message after countdown reaches 0
+  //           return 0; // Stop countdown at 0
+  //         }
+  //       });
+  //     }, 1000); // Update countdown every second
+  //     return () => clearInterval(timer);
+  //   }
+  // }, [isVisible]);
 
   return (
     <div
@@ -51,7 +51,7 @@ const Home = () => {
             <div className="w-24 h-24 bg-blue-500 rounded-full overflow-hidden shadow-lg">
               {/* Insert your avatar or any image here */}
               <img
-                src="/path-to-your-avatar-image.jpg"
+                src="/cvimage.png"
                 alt="Avatar"
                 className="w-full h-full object-cover"
               />
