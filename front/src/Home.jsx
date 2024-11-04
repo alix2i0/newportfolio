@@ -50,7 +50,7 @@ const Home = () => {
             {/* Avatar Image */}
             <div className="w-32 h-32 bg-blue-500 rounded-full overflow-hidden shadow-lg border-4 border-white">
               <img
-                src="/cvimage.png" // Replace with the actual path
+                src="/cvimage1.png" // Replace with the actual path
                 alt="Avatar"
                 className="w-full h-full object-cover"
               />
