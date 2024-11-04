@@ -15,21 +15,21 @@ const Home = () => {
   }, []);
 
   // Countdown logic to hide message after reaching 0
-  // useEffect(() => {
-  //   if (isVisible) {
-  //     const timer = setInterval(() => {
-  //       setCountdown((prev) => {
-  //         if (prev > 1) {
-  //           return prev - 1;
-  //         } else {
-  //           setIsVisible(false); // Hide message after countdown reaches 0
-  //           return 0; // Stop countdown at 0
-  //         }
-  //       });
-  //     }, 1000); // Update countdown every second
-  //     return () => clearInterval(timer);
-  //   }
-  // }, [isVisible]);
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev > 1) {
+            return prev - 1;
+          } else {
+            setIsVisible(false); // Hide message after countdown reaches 0
+            return 0; // Stop countdown at 0
+          }
+        });
+      }, 1000); // Update countdown every second
+      return () => clearInterval(timer);
+    }
+  }, [isVisible]);
 
   return (
     <div
@@ -47,11 +47,10 @@ const Home = () => {
             I’m a Full Stack Web Developer with expertise in React, Node.js, and design.
           </p>
           <div className="flex justify-center mb-4">
-            {/* Placeholder for avatar image */}
-            <div className="w-24 h-24 bg-blue-500 rounded-full overflow-hidden shadow-lg">
-              {/* Insert your avatar or any image here */}
+            {/* Avatar Image */}
+            <div className="w-32 h-32 bg-blue-500 rounded-full overflow-hidden shadow-lg border-4 border-white">
               <img
-                src="/cvimage.png"
+                src="/path-to-your-uploaded-avatar-image.jpg" // Replace with the actual path
                 alt="Avatar"
                 className="w-full h-full object-cover"
               />
